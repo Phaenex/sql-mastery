@@ -68,6 +68,13 @@ export default function HomePage() {
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground font-mono text-sm">
       <main id="main" tabIndex={-1} className="flex-1 max-w-3xl mx-auto w-full px-6 py-12 sm:py-16">
+        {/* The visible "hero" is the terminal prompt, which carries no heading of its own,
+            so the page had no h1 at all and the section labels below were <p>. A screen
+            reader landing here got a flat list of links with no structure to skip between.
+            sr-only because the design's opening statement is the prompt, not a title --
+            this names the page for assistive tech without altering what is drawn.
+            Mirrors python-mastery/app/page.tsx, which already does exactly this. */}
+        <h1 className="sr-only">sql-mastery — learn SQL by writing it</h1>
         <section className="flex flex-wrap items-baseline justify-between gap-3">
           <div className="flex-1 min-w-0">
             <HomeTerminal modules={modules} />
@@ -94,7 +101,7 @@ export default function HomePage() {
         </section>
 
         <section className="mt-8">
-          <p className="text-xs uppercase tracking-widest text-muted-foreground"># modules</p>
+          <h2 className="text-xs uppercase tracking-widest text-muted-foreground"># modules</h2>
           <ul className="mt-3 border-y border-border/60 divide-y divide-border/40">
             {modules.map((m) => {
               const doneCount = showcase
@@ -143,7 +150,7 @@ export default function HomePage() {
 
         <section className="mt-10 grid sm:grid-cols-3 gap-4">
           <div>
-            <p className="text-xs uppercase tracking-widest text-muted-foreground"># playground</p>
+            <h2 className="text-xs uppercase tracking-widest text-muted-foreground"># playground</h2>
             <Link
               href="/playground"
               className="mt-3 block py-2 px-2 -mx-2 rounded hover:bg-card/60 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background"
@@ -153,7 +160,7 @@ export default function HomePage() {
             </Link>
           </div>
           <div>
-            <p className="text-xs uppercase tracking-widest text-muted-foreground"># projects</p>
+            <h2 className="text-xs uppercase tracking-widest text-muted-foreground"># projects</h2>
             <Link
               href="/projects"
               className="mt-3 block py-2 px-2 -mx-2 rounded hover:bg-card/60 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background"
@@ -163,7 +170,7 @@ export default function HomePage() {
             </Link>
           </div>
           <div>
-            <p className="text-xs uppercase tracking-widest text-muted-foreground"># stats</p>
+            <h2 className="text-xs uppercase tracking-widest text-muted-foreground"># stats</h2>
             <Link
               href="/stats"
               className="mt-3 block py-2 px-2 -mx-2 rounded hover:bg-card/60 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background"
